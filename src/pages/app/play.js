@@ -6,11 +6,11 @@ import Layout from '../../components/Layout';
 
 const UsernameField = styled.strong``;
 
-const PlayPage = () => {
+const PlayPage = ({ path }) => {
 	const name = useSelector((state) => state.profile.username);
 
 	return (
-		<Layout>
+		<Layout path={path}>
 			<h1>
 				Hi <UsernameField>{name}</UsernameField>
 			</h1>

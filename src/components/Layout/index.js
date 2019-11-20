@@ -6,19 +6,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Menu from '../Menu';
+
 import '../../styles/styles.scss';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, path }) => {
 	return (
-		<>
-			<main className="app">{children}</main>
-			<nav className="app__menu"></nav>
-		</>
+		<div className="app">
+			<main className="app__wrapper">{children}</main>
+			<Menu currentPage={path} />
+			<aside className="app__modal"></aside>
+		</div>
 	);
 };
 
 Layout.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
+	path: PropTypes.node.isRequired
 };
 
 export default Layout;

@@ -14,11 +14,6 @@ body {
 	z-index: 9999;
 }
 
-.app__menu {
-	display: none;
-	visibility: hidden;
-}
-
 .app {
 	@include size(100%, 100%);
 	@include abs-pos();
@@ -29,8 +24,7 @@ body {
 	@include base-lettering;
 	@include montserrat;
 
-	.wrapper {
-		@include size(100%, 100%);
+	&--wrapper {
 		position: relative;
 	}
 }

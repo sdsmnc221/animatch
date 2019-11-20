@@ -19,7 +19,7 @@ const IndexPage = () => {
 	}, [name]);
 
 	return (
-		<Layout>
+		<Layout path="/">
 			<h1>
 				Hi <UsernameField>{name}</UsernameField>
 			</h1>
