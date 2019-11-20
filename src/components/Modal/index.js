@@ -2,17 +2,21 @@ import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
+import configs from '../../configs';
+
+const { rules, credits, endgame } = configs.modals;
+
 const renderModalContent = (type = null, endGameStatus = null) => {
 	let content = <></>;
 
 	switch (type) {
-		case 'rules':
+		case rules.label:
 			content = <p>Some rules.</p>;
 			break;
-		case 'credits':
+		case credits.label:
 			content = <p>Some credits.</p>;
 			break;
-		case 'endgame':
+		case endgame.label:
 			content = <p>You {endGameStatus}.</p>;
 			break;
 		default:

@@ -6,6 +6,10 @@ import { Link } from 'gatsby';
 import Button from '../Button';
 import Modal, { renderModalContent } from '../Modal';
 
+import configs from '../../configs';
+
+const { credits, rules, extLink } = configs.menu;
+
 const Nav = styled.nav`
 	display: ${({ currentPage }) => (currentPage === '/' ? 'none' : 'block')};
 	visibility: ${({ currentPage }) =>
@@ -26,17 +30,18 @@ const Menu = ({ currentPage }) => {
 		setContentType(null);
 	};
 
-	const extLink = {
-		label: currentPage.includes('play') ? 'History' : 'Play',
-		to: `/app/${currentPage.includes('play') ? 'history' : 'play'}`
-	};
-
 	return (
 		<>
 			<Nav currentPage={currentPage}>
-				<Button label="Rules" click={() => showModal('rules')} />
-				<Button label="Credits" click={() => showModal('credits')} />
-				<Link to={extLink.to}>{extLink.label}</Link>
+				<Button
+					label={credits.buttonLabel}
+					click={() => showModal(credits.typeLabel)}
+				/>
+				<Button
+					label={rules.buttonLabel}
+					click={() => showModal(rules.typeLabel)}
+				/>
+				<Link to={extLink(currentPage).to}>{extLink(currentPage).label}</Link>
 			</Nav>
 			{modalVisible && (
 				<Modal>
