@@ -31,6 +31,10 @@ module.exports = {
 		// To learn more, visit: https://gatsby.dev/offline
 		// `gatsby-plugin-offline`,
 		`gatsby-plugin-styled-components`,
-		`gatsby-plugin-sass`
+		`gatsby-plugin-sass`,
+		{
+			resolve: `gatsby-plugin-create-client-paths`,
+			options: { prefixes: [`/app/*`] }
+		}
 	]
 };
