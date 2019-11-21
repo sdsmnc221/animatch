@@ -11,17 +11,17 @@ import { newUser, newUsername } from '../../redux/actions/profileActions';
 const UsernameField = styled.strong``;
 
 const IndexPage = () => {
-	const name = useSelector((state) => state.profile.username);
+	const username = useSelector((state) => state.profile.username);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (!name) newUser(dispatch);
-	}, [name]);
+		if (!username) newUser(dispatch);
+	}, [username]);
 
 	return (
 		<Layout path="/">
 			<h1>
-				Hi <UsernameField>{name}</UsernameField>
+				Hi <UsernameField>{username}</UsernameField>
 			</h1>
 			<p>Welcome to animatch.</p>
 			<Button label="I don't want this name" click={() => newUsername(dispatch)} />

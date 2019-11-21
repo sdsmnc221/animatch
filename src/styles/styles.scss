@@ -24,7 +24,39 @@ body {
 	@include base-lettering;
 	@include montserrat;
 
-	&--wrapper {
+	&__wrapper {
 		position: relative;
+		@include size(100%, 100%);
+	}
+
+	.card {
+		&.active .card__inner {
+			transform: rotateY(180deg);
+		}
+	}
+
+	&__modal {
+		div {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 50%;
+			height: 50%;
+			background-color: white;
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: -100%;
+				left: -100%;
+				width: 320%;
+				height: 320%;
+				display: block;
+				z-index: -1;
+				background-color: black;
+				opacity: 0.4;
+			}
+		}
 	}
 }

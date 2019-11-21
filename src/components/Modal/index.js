@@ -17,7 +17,7 @@ const renderModalContent = (type = null, endGameStatus = null) => {
 			content = <p>Some credits.</p>;
 			break;
 		case endgame.label:
-			content = <p>You {endGameStatus}.</p>;
+			content = <p>{endgame.status[endGameStatus]}</p>;
 			break;
 		default:
 			break;

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
@@ -11,6 +12,9 @@ import configs from '../../configs';
 const { credits, rules, extLink } = configs.menu;
 
 const Nav = styled.nav`
+	position: absolute;
+	bottom: 0;
+	left: 0;
 	display: ${({ currentPage }) => (currentPage === '/' ? 'none' : 'block')};
 	visibility: ${({ currentPage }) =>
 		currentPage === '/' ? 'hidden' : 'visible'};
@@ -19,6 +23,7 @@ const Nav = styled.nav`
 const Menu = ({ currentPage }) => {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [contentType, setContentType] = useState(null);
+	const { endGameStatus } = useSelector((state) => state.session);
 
 	const showModal = (what) => {
 		setModalVisible(true);
@@ -29,6 +34,10 @@ const Menu = ({ currentPage }) => {
 		setModalVisible(false);
 		setContentType(null);
 	};
+
+	useEffect(() => {
+		if (endGameStatus) showModal(configs.modals.endgame.label);
+	}, [endGameStatus]);
 
 	return (
 		<>
@@ -45,7 +54,7 @@ const Menu = ({ currentPage }) => {
 			</Nav>
 			{modalVisible && (
 				<Modal>
-					{renderModalContent(contentType)}
+					{renderModalContent(contentType, endGameStatus)}
 					<Button label="Close" click={() => hideModal()} />
 				</Modal>
 			)}

@@ -34,7 +34,11 @@ const configs = {
 			label: 'credits'
 		},
 		endgame: {
-			label: 'endgame'
+			label: 'endgame',
+			status: {
+				WIN: 'You Won!',
+				LOSE: 'You Lost...'
+			}
 		}
 	},
 	gameSettings: {
@@ -46,19 +50,19 @@ const configs = {
 			options: [
 				{
 					label: 'Easy',
-					value: 7
+					value: 8
 				},
 				{
 					label: 'Normal',
-					value: 14
+					value: 18
 				},
 				{
 					label: 'Hard',
-					value: 21
+					value: 32
 				},
 				{
 					label: 'Hell',
-					value: 28
+					value: 50
 				}
 			]
 		},

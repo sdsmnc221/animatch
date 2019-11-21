@@ -11,7 +11,7 @@ const { title, valid, playModes, timeLimit, images } = configs.gameSettings;
 const initialSettings = {
 	playMode: playModes.options[0].label,
 	timeLimit: timeLimit.options[0].label,
-	timeLimitValue: undefined,
+	timeLimitValue: null,
 	images: images.options
 };
 

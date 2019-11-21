@@ -1,16 +1,17 @@
 export default {
 	profile: {
-		username: undefined,
-		country: undefined
+		username: null,
+		country: null
 	},
 	play: {
 		isset: false,
+		moves: 0,
 		configs: {
-			mode: undefined,
+			mode: null,
 			timerActivated: false,
-			timer: undefined,
-			animals: undefined,
-			pairsNb: undefined
+			timer: null,
+			animals: null,
+			pairsNb: null
 		}
 	},
 	session: {
@@ -18,9 +19,9 @@ export default {
 		cards: [],
 		fetchingImages: false,
 		hasError: false,
-		currentCard1: undefined,
-		currentCard2: undefined,
-		matchedPairs: undefined,
-		endGameStatus: undefined
+		currentCards: [],
+		matchedPairs: [],
+		endGameStatus: null,
+		preImages: []
 	}
 };

@@ -54,6 +54,13 @@ const utils = {
 		),
 	last: (arr) => arr[arr.length - 1],
 	deepFlatten,
+	distinctBy: (array, key) => {
+		const result = [];
+		array.forEach((el) => {
+			if (!result.find((el_) => el_[key] === el[key])) result.push(el);
+		});
+		return result;
+	},
 	radian: () => (Math.random() * 360 * Math.PI) / 180,
 	distance: (x1, y1, x2, y2) => {
 		const dx = x1 - x2;
