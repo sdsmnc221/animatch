@@ -1,5 +1,6 @@
 import { PLAY_SET_CONFIGS, PLAY_RESET_CONFIGS } from '../../actionTypes';
 import initialStates from '../../initialStates';
+
 import configs from '../../../configs';
 
 function play(state = initialStates.play, action) {
@@ -24,7 +25,7 @@ function play(state = initialStates.play, action) {
 		}
 		case PLAY_RESET_CONFIGS: {
 			return {
-				...state
+				...initialStates.play
 			};
 		}
 		default:

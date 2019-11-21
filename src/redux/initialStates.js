@@ -11,14 +11,16 @@ export default {
 			timer: undefined,
 			animals: undefined,
 			pairsNb: undefined
-		},
-		session: {
-			images: [],
-			cards: [],
-			currentCard1: undefined,
-			currentCard2: undefined,
-			matchedPairs: undefined,
-			endGameStatus: undefined
 		}
+	},
+	session: {
+		images: [],
+		cards: [],
+		fetchingImages: false,
+		hasError: false,
+		currentCard1: undefined,
+		currentCard2: undefined,
+		matchedPairs: undefined,
+		endGameStatus: undefined
 	}
 };

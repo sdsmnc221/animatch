@@ -35,7 +35,8 @@ const GameSettings = () => {
 		}
 	};
 
-	const validate = () => {
+	const validate = (event) => {
+		event.preventDefault();
 		setConfigs(dispatch, settings);
 	};
 

@@ -39,25 +39,26 @@ const configs = {
 	},
 	gameSettings: {
 		title: 'Configure your game settings!',
+		reset: 'Anything but this. Reset my game...',
 		valid: `OK let's match!`,
 		playModes: {
 			label: 'You want this...',
 			options: [
 				{
 					label: 'Easy',
-					value: 6
+					value: 7
 				},
 				{
 					label: 'Normal',
-					value: 12
+					value: 14
 				},
 				{
 					label: 'Hard',
-					value: 24
+					value: 21
 				},
 				{
 					label: 'Hell',
-					value: 48
+					value: 28
 				}
 			]
 		},
@@ -80,7 +81,40 @@ const configs = {
 			options: ['Cat', 'Dog', 'Bird', 'Panda', 'Fox', 'Koala', 'Pikachu']
 		}
 	},
-	content: {}
+	API: {
+		cors: 'https://cors-anywhere.herokuapp.com/',
+		endpoint: 'https://some-random-api.ml/',
+		animals: [
+			{
+				label: 'Cat',
+				value: 'img/cat'
+			},
+			{
+				label: 'Dog',
+				value: 'img/dog'
+			},
+			{
+				label: 'Bird',
+				value: 'img/birb'
+			},
+			{
+				label: 'Panda',
+				value: 'img/panda'
+			},
+			{
+				label: 'Fox',
+				value: 'img/fox'
+			},
+			{
+				label: 'Koala',
+				value: 'img/koala'
+			},
+			{
+				label: 'Pikachu',
+				value: 'pikachuimg'
+			}
+		]
+	}
 };
 
 export default configs;

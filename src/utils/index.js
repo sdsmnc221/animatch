@@ -1,3 +1,6 @@
+const deepFlatten = (arr) =>
+	[].concat(...arr.map((v) => (Array.isArray(v) ? deepFlatten(v) : v)));
+
 const utils = {
 	lerp: (start, end, amt) => {
 		return (1 - amt) * start + amt * end;
@@ -23,11 +26,12 @@ const utils = {
 		let n = (Math.random() * 0xfffff * 1000000).toString(16);
 		return '#' + n.slice(0, 6);
 	},
+	simpleHash: () => Math.random().toString(16),
 	extractRGB: (color) =>
 		color
-		.split(',')
-		.map((c) => parseInt(c.match(/\d+/)))
-		.filter((c) => !isNaN(c)),
+			.split(',')
+			.map((c) => parseInt(c.match(/\d+/)))
+			.filter((c) => !isNaN(c)),
 	alpha: (color, opacity) => color.replace('o', opacity),
 	randomIntegerInRange: (min, max) =>
 		Math.floor(Math.random() * (max - min + 1)) + min,
@@ -42,11 +46,14 @@ const utils = {
 		return arr;
 	},
 	chunk: (arr, size) =>
-		Array.from({
+		Array.from(
+			{
 				length: Math.ceil(arr.length / size)
-			}, (v, i) =>
-			arr.slice(i * size, i * size + size)
+			},
+			(v, i) => arr.slice(i * size, i * size + size)
 		),
+	last: (arr) => arr[arr.length - 1],
+	deepFlatten,
 	radian: () => (Math.random() * 360 * Math.PI) / 180,
 	distance: (x1, y1, x2, y2) => {
 		const dx = x1 - x2;
