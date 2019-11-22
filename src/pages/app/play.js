@@ -17,6 +17,7 @@ import UsernameField from '../../components/UsernameField';
 
 import configs from '../../configs';
 import { saveHistory } from '../../redux/actions/historyActions';
+import Loader from '../../components/Loader';
 
 const Playfield = styled.div`
 	position: absolute;
@@ -75,6 +76,7 @@ const PlayPage = ({ path }) => {
 					</Controller>
 				</Playfield>
 			)}
+			{fetchingImages && <Loader />}
 		</Layout>
 	);
 };

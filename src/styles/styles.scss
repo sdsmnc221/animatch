@@ -72,6 +72,11 @@ a {
 	@include abs-pos();
 	overflow: hidden;
 	z-index: 9999;
+	background-color: #f3ece7;
+	background-image: url('https://media.giphy.com/media/1VV747Ys8vI5cUZlqD/giphy.gif');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 20% auto;
 }
 
 .app {
