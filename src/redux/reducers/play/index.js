@@ -1,8 +1,4 @@
-import {
-	PLAY_SET_CONFIGS,
-	PLAY_RESET_CONFIGS,
-	PLAY_COUNT_MOVES
-} from '../../actionTypes';
+import { PLAY_SET_CONFIGS, PLAY_RESET_CONFIGS } from '../../actionTypes';
 import initialStates from '../../initialStates';
 
 import configs from '../../../configs';

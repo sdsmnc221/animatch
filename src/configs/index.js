@@ -124,6 +124,11 @@ const configs = {
 				value: 'pikachuimg'
 			}
 		]
+	},
+	SERVER: {
+		endpoint: 'https://animatch-server.herokuapp.com/',
+		fetch: 'fetch',
+		save: 'save'
 	}
 };
 

@@ -23,5 +23,9 @@ export default {
 		endGameStatus: null,
 		moves: 0,
 		preImages: []
+	},
+	history: {
+		records: [],
+		hasError: false
 	}
 };
