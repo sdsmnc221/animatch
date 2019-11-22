@@ -90,6 +90,16 @@ const configs = {
 			options: ['Cat', 'Dog', 'Bird', 'Panda', 'Fox', 'Koala', 'Pikachu']
 		}
 	},
+	leaderboard: {
+		options: ['Easy', 'Normal', 'Hard', 'Hell'],
+		display: {
+			username: 'Player x ',
+			country: 'from x ',
+			endGameStatus: 'has x ',
+			moves: 'within x moves ',
+			timeCreated: 'at x.'
+		}
+	},
 	API: {
 		ip: 'http://ip-api.com/json',
 		cors: 'https://cors-anywhere.herokuapp.com/',

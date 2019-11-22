@@ -16,6 +16,7 @@ import Button from '../../components/Button';
 import UsernameField from '../../components/UsernameField';
 
 import configs from '../../configs';
+import { saveHistory } from '../../redux/actions/historyActions';
 
 const Playfield = styled.div`
 	position: absolute;
@@ -34,13 +35,14 @@ const Controller = styled.div`
 
 const PlayPage = ({ path }) => {
 	const dispatch = useDispatch();
+	const state = useSelector((state) => state);
 	const profile = useSelector((state) => state.profile);
 	const play = useSelector((state) => state.play);
 	const session = useSelector((state) => state.session);
 
 	const { username } = profile;
 	const { isset, configs: gameSettings } = play;
-	const { cards, preImages, moves, fetchingImages } = session;
+	const { cards, preImages, moves, fetchingImages, endGameStatus } = session;
 
 	const reset = () => {
 		dumpImages(dispatch);
@@ -51,6 +53,10 @@ const PlayPage = ({ path }) => {
 	useEffect(() => {
 		if (isset) fetchImages(dispatch, gameSettings, preImages);
 	}, [isset, gameSettings, dispatch, preImages.length]);
+
+	useEffect(() => {
+		if (endGameStatus) saveHistory(dispatch, state);
+	}, [endGameStatus, dispatch]);
 
 	return (
 		<Layout path={path}>

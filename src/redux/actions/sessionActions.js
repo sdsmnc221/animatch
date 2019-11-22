@@ -9,7 +9,9 @@ import {
 	SESSION_CHECK_PAIR,
 	SESSION_CHECK_ENDGAME,
 	SESSION_RESET_GAME,
-	SESSION_COUNT_MOVES
+	SESSION_COUNT_MOVES,
+	SESSION_START_GAME,
+	SESSION_DO_ENDGAME
 } from '../actionTypes';
 import utils from '../../utils';
 import configs from '../../configs';
@@ -131,8 +133,12 @@ export const updateCurrentCards = (dispatch, payload) => {
 export const checkPair = (dispatch) => dispatch({ type: SESSION_CHECK_PAIR });
 
 export const checkEndGame = (dispatch) =>
-	dispatch({ type: SESSION_CHECK_ENDGAME });
+	dispatch({ type: SESSION_CHECK_ENDGAME, dispatch });
+
+export const doEndGame = (dispatch) => dispatch({ type: SESSION_DO_ENDGAME });
 
 export const resetGame = (dispatch) => dispatch({ type: SESSION_RESET_GAME });
+
+export const startGame = (dispatch) => dispatch({ type: SESSION_START_GAME });
 
 export const countMoves = (dispatch) => dispatch({ type: SESSION_COUNT_MOVES });

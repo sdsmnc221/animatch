@@ -22,10 +22,13 @@ export default {
 		matchedPairs: [],
 		endGameStatus: null,
 		moves: 0,
-		preImages: []
+		preImages: [],
+		timeCreated: null,
+		timeElapsed: null
 	},
 	history: {
-		records: [],
+		records: null,
+		hasRecords: false,
 		hasError: false
 	}
 };

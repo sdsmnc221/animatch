@@ -7,7 +7,8 @@ import {
 	SESSION_CHECK_PAIR,
 	SESSION_CHECK_ENDGAME,
 	SESSION_COUNT_MOVES,
-	SESSION_RESET_GAME
+	SESSION_RESET_GAME,
+	SESSION_START_GAME
 } from '../../actionTypes';
 
 import initialStates from '../../initialStates';
@@ -84,7 +85,7 @@ function play(state = initialStates.session, action) {
 		}
 		case SESSION_CHECK_ENDGAME: {
 			const { images, matchedPairs } = state;
-			let endGameStatus = images.length === matchedPairs.length ? 'WIN' : null;
+			const endGameStatus = images.length === matchedPairs.length ? 'WIN' : null;
 
 			return {
 				...state,
@@ -97,6 +98,12 @@ function play(state = initialStates.session, action) {
 			return {
 				...state,
 				moves: moves + 1
+			};
+		}
+		case SESSION_START_GAME: {
+			return {
+				...state,
+				timeCreated: new Date(Date.now())
 			};
 		}
 		case SESSION_RESET_GAME: {

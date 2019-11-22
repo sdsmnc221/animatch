@@ -5,6 +5,7 @@ import Button from '../Button';
 
 import configs from '../../configs';
 import { setConfigs } from '../../redux/actions/playActions';
+import { startGame } from '../../redux/actions/sessionActions';
 
 const { valid, playModes, timeLimit, images } = configs.gameSettings;
 
@@ -38,6 +39,7 @@ const GameSettings = () => {
 	const validate = (event) => {
 		event.preventDefault();
 		setConfigs(dispatch, settings);
+		startGame(dispatch);
 	};
 
 	useEffect(() => {
@@ -75,9 +77,7 @@ const GameSettings = () => {
 						{images.options.map((option, i) => (
 							<p className="checkbox" key={i}>
 								<input id={option} type="checkbox" value={option} defaultChecked />
-								<label htmlFor={option}>
-									{option}
-								</label>
+								<label htmlFor={option}>{option}</label>
 							</p>
 						))}
 					</div>
