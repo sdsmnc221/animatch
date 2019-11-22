@@ -44,6 +44,24 @@ const Front = styled.div`
 	transform: rotateY(180deg);
 `;
 
+const Symbol = styled.div`
+	position: absolute;
+	z-index: 2;
+	top: 6%;
+	right: 6%;
+	width: calc(100% * ${({ variance }) =>
+		variance > 0.6 ? variance / 2 : variance});
+	height: calc(100% * ${({ variance }) =>
+		variance > 0.6 ? variance / 2 : variance});
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	backface-visibility: hidden;
+	transform: rotateY(180deg);
+	background-image: url('/symbol-${({ symbol }) => symbol}.svg');
+	opacity: 0.8;
+`;
+
 const Holder = styled.div`
 	position: absolute;
 	width: 100%;
@@ -69,7 +87,18 @@ const Wrapper = styled.figure`
 	}
 `;
 
-const Card = ({ active, click, link, type, uid, index, className, color }) => {
+const Card = ({
+	active,
+	click,
+	link,
+	type,
+	uid,
+	symbol,
+	variance,
+	index,
+	className,
+	color
+}) => {
 	const toggle = () => {
 		click({ type, uid, index });
 	};
@@ -87,6 +116,7 @@ const Card = ({ active, click, link, type, uid, index, className, color }) => {
 					}}
 				/>
 				<Front style={{ backgroundImage: `url(${link})` }} className="border" />
+				<Symbol symbol={symbol} variance={variance} />
 			</Container>
 		</Wrapper>
 	);
@@ -100,7 +130,9 @@ Card.propTypes = {
 	click: PropTypes.func,
 	active: PropTypes.bool,
 	className: PropTypes.string,
-	color: PropTypes.string.isRequired
+	color: PropTypes.string.isRequired,
+	symbol: PropTypes.number.isRequired,
+	variance: PropTypes.number.isRequired
 };
 
 Card.defaultProps = {

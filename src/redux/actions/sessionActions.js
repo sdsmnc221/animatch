@@ -16,7 +16,7 @@ import {
 import utils from '../../utils';
 import configs from '../../configs';
 
-const { shuffle, last, deepFlatten, simpleHash } = utils;
+const { shuffle, last, deepFlatten, simpleHash, randomIntegerInRange } = utils;
 const { API } = configs;
 
 const link = (label) =>
@@ -66,7 +66,9 @@ const assignCards = (imagesArray, prep) => {
 	const images = imagesArray.map((image, i) => ({
 		type: prep[i].type,
 		link: image.data ? image.data.link : image.link,
-		uid: simpleHash()
+		uid: simpleHash(),
+		symbol: randomIntegerInRange(1, 20),
+		variance: Math.random()
 	}));
 
 	const cards = shuffle([...shuffle(images), ...shuffle(images)]);
