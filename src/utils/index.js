@@ -2,6 +2,7 @@ const deepFlatten = (arr) =>
 	[].concat(...arr.map((v) => (Array.isArray(v) ? deepFlatten(v) : v)));
 
 const utils = {
+	hasWindow: () => typeof window !== `undefined`,
 	lerp: (start, end, amt) => {
 		return (1 - amt) * start + amt * end;
 	},

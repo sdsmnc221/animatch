@@ -3,7 +3,7 @@
 One Paragraph of project description goes here.
 Badges too.
 
-[Live Demo](https://some-link)
+[Live Demo](https://animatch.surge.sh)
 
 ## Getting Started
 
@@ -37,7 +37,11 @@ gatsby develop
 ## Build & Deploy
 
 ```
-npm run build
+npm run build //make sure to have surge installed
+```
+
+```
+gatsby build //just build, no deploy
 ```
 
 ## Built With
