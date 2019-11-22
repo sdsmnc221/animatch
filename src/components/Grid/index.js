@@ -13,6 +13,9 @@ import {
 } from '../../redux/actions/sessionActions';
 import { countMoves } from '../../redux/actions/playActions';
 
+const { peru, darkKhaki, rosyBrown } = configs.colors;
+const { sample } = utils;
+
 const Container = styled.div`
 	position: absolute;
 	top: 0;
@@ -20,17 +23,61 @@ const Container = styled.div`
 	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-columns: ${({ r, s }) => `repeat(${r}, ${s}px)`};
-	grid-template-rows: ${({ r, s }) => `repeat(${r}, ${s}px)`};
+	grid-template-columns: ${({ cols, cell }) => `repeat(${cols}, ${cell}px)`};
+	grid-template-rows: ${({ rows, cell }) => `repeat(${rows}, ${cell}px)`};
 	grid-column-gap: 16px;
 	grid-row-gap: 16px;
 	justify-content: center;
 	align-content: center;
+
+	.last-row {
+		transform: ${({ transform }) => transform};
+	}
 `;
 
+const transform = (cell, pairsNb, left) => {
+	if (pairsNb === 56 || pairsNb === 14) return 'translateX(0)';
+	else
+		return `translateX(
+			calc(calc((100% - (${left} * ${cell}px) - (3) * 16px)) / ${
+			pairsNb === 7 ? 6 : 2.4
+		} * -1)
+		)`;
+};
+
+const layout = (cardsNb) => {
+	const pairsNb = cardsNb / 2;
+	let cols, rows;
+
+	switch (pairsNb) {
+		case 7:
+			cols = 5;
+			rows = 3;
+			break;
+		case 14:
+			cols = 7;
+			rows = 4;
+			break;
+		case 28:
+			cols = 10;
+			rows = 6;
+			break;
+		case 56:
+			cols = 14;
+			rows = 8;
+			break;
+		default:
+			break;
+	}
+
+	return { cols, rows };
+};
+
 const Grid = ({ cards }) => {
-	const r = Math.sqrt(cards.length);
-	const s = utils.closestNumber(r, (configs.dimensions.H() * 0.8) / r);
+	const len = cards.length;
+	const { cols, rows } = layout(len);
+	const cell = utils.closestNumber(cols, (configs.dimensions.H() * 0.6) / rows);
+	const color = sample([peru, darkKhaki, rosyBrown]);
 
 	const { currentCards, matchedPairs } = useSelector((state) => state.session);
 	const isInCurrentCards = (c, i) =>
@@ -52,9 +99,21 @@ const Grid = ({ cards }) => {
 	};
 
 	return (
-		<Container r={r} s={s}>
+		<Container
+			cols={cols}
+			rows={rows}
+			cell={cell}
+			transform={transform(cell, len / 2, len - cols * (rows - 1))}>
 			{cards.map((c, i) => (
-				<Card key={i} {...c} index={i} click={click} active={isActive(c, i)} />
+				<Card
+					key={i}
+					{...c}
+					index={i}
+					click={click}
+					active={isActive(c, i)}
+					className={`${i >= cols * (rows - 1) && 'last-row'}`}
+					color={color}
+				/>
 			))}
 		</Container>
 	);

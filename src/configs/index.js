@@ -5,7 +5,12 @@ const configs = {
 	},
 	colors: {
 		text: 'rgba(0, 0, 0, o)',
-		bg: 'rgba(255, 255, 255, o)'
+		bg: 'rgba(255, 255, 255, o)',
+		beige: '#f4ede6',
+		peru: '#bf683e',
+		darkKhaki: '#bf8c63',
+		rosyBrown: '#c1a289',
+		darkSlateGray: '#29454a'
 	},
 	font: {
 		family: 'Montserrat',
@@ -43,26 +48,26 @@ const configs = {
 	},
 	gameSettings: {
 		title: 'Configure your game settings!',
-		reset: 'Anything but this. Reset my game...',
+		reset: 'Reset',
 		valid: `OK let's match!`,
 		playModes: {
 			label: 'You want this...',
 			options: [
 				{
 					label: 'Easy',
-					value: 8
+					value: 7
 				},
 				{
 					label: 'Normal',
-					value: 18
+					value: 14
 				},
 				{
 					label: 'Hard',
-					value: 32
+					value: 28
 				},
 				{
 					label: 'Hell',
-					value: 50
+					value: 56
 				}
 			]
 		},

@@ -6,7 +6,7 @@ import Button from '../Button';
 import configs from '../../configs';
 import { setConfigs } from '../../redux/actions/playActions';
 
-const { title, valid, playModes, timeLimit, images } = configs.gameSettings;
+const { valid, playModes, timeLimit, images } = configs.gameSettings;
 
 const initialSettings = {
 	playMode: playModes.options[0].label,
@@ -46,11 +46,9 @@ const GameSettings = () => {
 
 	return (
 		<div className="app__settings">
-			<h2>{title}</h2>
-
 			<form onSubmit={(e) => e.preventDefault()} onChange={change} ref={refForm}>
 				<fieldset>
-					<legend>{playModes.label}</legend>
+					<span>{playModes.label}</span>
 					<select>
 						{playModes.options.map((option, i) => (
 							<option value={option.label} key={i}>
@@ -61,7 +59,7 @@ const GameSettings = () => {
 				</fieldset>
 
 				<fieldset>
-					<legend>{timeLimit.label}</legend>
+					<span>{timeLimit.label}</span>
 					<select defaultValue="No">
 						{timeLimit.options.map((option, i) => (
 							<option value={option.label} key={i}>
@@ -72,13 +70,17 @@ const GameSettings = () => {
 				</fieldset>
 
 				<fieldset>
-					<legend>{images.labels}</legend>
-					{images.options.map((option, i) => (
-						<label key={i}>
-							{option}
-							<input type="checkbox" value={option} defaultChecked />
-						</label>
-					))}
+					<span>{images.labels}</span>
+					<div>
+						{images.options.map((option, i) => (
+							<p className="checkbox" key={i}>
+								<input id={option} type="checkbox" value={option} defaultChecked />
+								<label htmlFor={option}>
+									{option}
+								</label>
+							</p>
+						))}
+					</div>
 				</fieldset>
 
 				<Button label={valid} click={validate} />

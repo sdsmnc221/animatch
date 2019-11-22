@@ -38,7 +38,7 @@ const Modal = ({ children }) => {
 		return () => {
 			el.current.remove();
 		};
-	}, []);
+	}, [el.current]);
 
 	return createPortal(children, el.current);
 };

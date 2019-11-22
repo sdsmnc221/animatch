@@ -14,10 +14,14 @@ const { credits, rules, extLink } = configs.menu;
 const Nav = styled.nav`
 	position: absolute;
 	bottom: 0;
-	left: 0;
+	right: 0;
 	display: ${({ currentPage }) => (currentPage === '/' ? 'none' : 'block')};
 	visibility: ${({ currentPage }) =>
 		currentPage === '/' ? 'hidden' : 'visible'};
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 16px;
+	padding-right: 16px;
 `;
 
 const Menu = ({ currentPage }) => {

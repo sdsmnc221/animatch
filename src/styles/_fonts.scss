@@ -6,7 +6,9 @@ $base-letter-spacing: 0.8px;
 //font-weight:
 $thin: 100;
 $light: 300;
+$regular: 400;
 $medium: 500;
+$bold: 700;
 $black: 900;
 
 @mixin base-lettering() {
@@ -18,18 +20,69 @@ $black: 900;
 }
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,500,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:700|Satisfy|Source+Sans+Pro:400,700|Vidaloka&display=swap');
 
-@mixin montserrat(
-	$size: $base-font-size,
+@mixin amatic(
 	$style: normal,
 	$decoration: none,
-	$weight: $light,
+	$weight: $bold,
 	$align: justify,
 	$lh: $base-line-height,
 	$spacing: $base-letter-spacing
 ) {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Amatic SC', serif;
+	font-style: $style;
+	font-weight: $weight;
+	line-height: $lh;
+	letter-spacing: $spacing;
+	text-decoration: $decoration;
+	text-align: $align;
+}
+
+@mixin vidaloka(
+	$style: normal,
+	$decoration: none,
+	$weight: $regular,
+	$align: justify,
+	$lh: $base-line-height,
+	$spacing: $base-letter-spacing
+) {
+	font-family: 'Vidaloka', serif;
+	font-style: $style;
+	font-weight: $weight;
+	line-height: $lh;
+	letter-spacing: $spacing;
+	text-decoration: $decoration;
+	text-align: $align;
+}
+
+@mixin satisfy(
+	$style: normal,
+	$decoration: none,
+	$weight: $regular,
+	$align: justify,
+	$lh: $base-line-height,
+	$spacing: $base-letter-spacing
+) {
+	font-family: 'Satisfy', serif;
+	font-style: $style;
+	font-weight: $weight;
+	line-height: $lh;
+	letter-spacing: $spacing;
+	text-decoration: $decoration;
+	text-align: $align;
+}
+
+@mixin sourcesans(
+	$size: $base-font-size,
+	$style: normal,
+	$decoration: none,
+	$weight: $regular,
+	$align: justify,
+	$lh: $base-line-height,
+	$spacing: $base-letter-spacing
+) {
+	font-family: 'Source Sans Pro', sans-serif;
 	font-style: $style;
 	font-size: $size;
 	font-weight: $weight;
@@ -37,4 +90,10 @@ $black: 900;
 	letter-spacing: $spacing;
 	text-decoration: $decoration;
 	text-align: $align;
+}
+
+.amatic {
+	@include amatic;
+	font-size: $base-font-size * 2;
+	color: $peru;
 }

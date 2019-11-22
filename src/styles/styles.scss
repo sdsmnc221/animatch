@@ -1,9 +1,63 @@
 @import './theme';
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	@include size(100vw, 100vh);
 	overflow: hidden;
 	position: relative;
+}
+
+h1,
+h2,
+h2,
+h4 {
+	@include vidaloka;
+	text-transform: lowercase;
+	text-align: center !important;
+}
+
+h1 {
+	font-size: $base-font-size * 3.2 !important;
+	color: $peru;
+}
+
+h2 {
+	font-size: $base-font-size * 2.4 !important;
+}
+
+strong {
+	@include satisfy;
+	font-size: $base-font-size * 2.8;
+	color: $peru;
+	display: inline-block;
+	margin: 40px 20px;
+}
+
+button,
+a {
+	display: block;
+	margin: 12px;
+	padding: 6px 12px;
+	text-transform: uppercase;
+	letter-spacing: $base-letter-spacing * 2;
+	border: thin solid $peru !important;
+	border-radius: 16px !important;
+
+	&:hover {
+		color: $peru;
+		border: thin solid $text !important;
+		border-radius: 16px !important;
+	}
+}
+
+.border {
+	border-bottom: 12px solid $peru;
+	border-top: 12px solid $dark-khaki;
+	border-right: 12px solid $rosy-brown;
+	border-left: 12px solid $rosy-brown;
 }
 
 .app__overlay {
@@ -19,14 +73,145 @@ body {
 	@include abs-pos();
 	overflow: hidden;
 	color: $text;
-	background: $bg;
+	background-color: $bg;
+	background-image: url('/pattern-2.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto;
+	border-bottom: 48px solid $peru;
+	border-top: 24px solid $dark-khaki;
+	border-right: 24px solid $rosy-brown;
+	border-left: 24px solid $rosy-brown;
 
 	@include base-lettering;
-	@include montserrat;
+	@include sourcesans;
 
 	&__wrapper {
 		position: relative;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;
+		padding: 12% 0;
 		@include size(100%, 100%);
+	}
+
+	canvas {
+		@include size(100%, 100%);
+		@include abs-pos();
+		pointer-events: none;
+	}
+
+	.usernamefield {
+		width: 100%;
+		background-image: url('/pattern-1.png');
+		background-repeat: repeat;
+		background-position: center;
+		background-size: 32% auto;
+
+		strong {
+			background-color: $bg;
+			padding: 6px 12px;
+			display: inline-block;
+		}
+	}
+
+	&__settings {
+		@include size(100%, 100%);
+
+		h1 {
+			@include abs-pos();
+			width: 100%;
+		}
+
+		form {
+			@include size(100%, 100%);
+			transform: translateY(24%);
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			align-items: center;
+
+			fieldset {
+				position: relative;
+				min-width: 40%;
+				margin: 10px 0;
+
+				span {
+					@include amatic();
+					font-size: $base-font-size * 2;
+					color: $peru;
+				}
+
+				select {
+					position: absolute;
+					right: 4%;
+					height: 100%;
+					border-radius: 16px;
+					text-align: center;
+				}
+
+				&:last-of-type {
+					span {
+						display: block;
+						text-align: center;
+						margin-bottom: 24px;
+					}
+
+					label {
+						position: relative;
+						display: inline-block;
+						margin: 0 20px 24px 0;
+
+						&:before {
+							content: '';
+							display: inline-block;
+							position: absolute;
+							right: -24px;
+							top: 2px;
+							height: 16px;
+							width: 16px;
+							border: thin solid $peru;
+							border-radius: 100%;
+						}
+
+						&:after {
+							content: '';
+							display: inline-block;
+							position: absolute;
+							right: -20px;
+							top: 6px;
+							display: inline-block;
+							height: 6px;
+							width: 9px;
+							border-left: 2px solid $dark-khaki;
+							border-bottom: 2px solid $dark-khaki;
+							transform: rotate(-45deg);
+						}
+					}
+
+					.checkbox {
+						display: inline-block;
+					}
+
+					div {
+						text-align: center;
+					}
+
+					input {
+						opacity: 0;
+
+						& + label:after {
+							opacity: 0;
+						}
+
+						&:checked + label::after {
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.card {
@@ -37,13 +222,25 @@ body {
 
 	&__modal {
 		div {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: 50%;
-			height: 50%;
-			background-color: white;
+			@include abs-center();
+			width: 60%;
+			height: 60%;
+			border-radius: 16px;
+			background-color: $bg;
+			border-bottom: 24px solid $peru;
+			border-top: 24px solid $dark-khaki;
+			border-right: 24px solid $rosy-brown;
+			border-left: 24px solid $rosy-brown;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			p {
+				@include amatic;
+				font-size: $base-font-size * 4;
+				color: $peru;
+			}
 
 			&:after {
 				content: '';
@@ -54,8 +251,12 @@ body {
 				height: 320%;
 				display: block;
 				z-index: -1;
-				background-color: black;
-				opacity: 0.4;
+				background-color: $rosy-brown;
+				background-image: url('/pattern-2.png');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: auto;
+				opacity: 0.8;
 			}
 		}
 	}

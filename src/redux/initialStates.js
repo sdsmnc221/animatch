@@ -1,6 +1,6 @@
 export default {
 	profile: {
-		username: null,
+		username: '',
 		country: null
 	},
 	play: {

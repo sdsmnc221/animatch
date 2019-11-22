@@ -9,10 +9,9 @@ import Layout from '../../components/Layout';
 import GameSettings from '../../components/GameSettings';
 import Grid from '../../components/Grid';
 import Button from '../../components/Button';
+import UsernameField from '../../components/UsernameField';
 
 import configs from '../../configs';
-
-const UsernameField = styled.strong``;
 
 const Playfield = styled.div`
 	position: absolute;
@@ -20,11 +19,13 @@ const Playfield = styled.div`
 	height: 100%;
 	top: 0;
 	left: 0;
+`;
 
-	button {
-		position: relative;
-		z-index: 2;
-	}
+const Controller = styled.div`
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 16px 16px 0 0;
 `;
 
 const PlayPage = ({ path }) => {
@@ -48,15 +49,19 @@ const PlayPage = ({ path }) => {
 
 	return (
 		<Layout path={path}>
-			<h1>
-				Hi <UsernameField>{username}</UsernameField>
-			</h1>
-			{!isset && <GameSettings />}
+			{!isset && (
+				<>
+					<UsernameField username={username} absolute />
+					<GameSettings />
+				</>
+			)}
 			{isset && (
 				<Playfield>
 					<Grid cards={cards} />
-					<Button label={configs.gameSettings.reset} click={reset} />
-					<p>Moves: {moves}</p>
+					<Controller>
+						<p className="amatic">Moves: {moves}</p>
+						<Button label={configs.gameSettings.reset} click={reset} />
+					</Controller>
 				</Playfield>
 			)}
 		</Layout>

@@ -2,6 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import configs from '../../configs';
+
+const { darkSlateGray } = configs.colors;
+
+const bgImg = `background-image: url('/pattern-1.png');
+		background-repeat: repeat;
+		background-position: center;
+		background-size: contain;`;
+
 const Container = styled.div`
 	position: relative;
 	width: 100%;
@@ -10,6 +19,7 @@ const Container = styled.div`
 	justify-content: center;
 	align-items: center;
 	transform-style: preserve-3d;
+	box-shadow: 4px 4px 0 0 ${darkSlateGray};
 `;
 
 const Back = styled.div`
@@ -18,7 +28,8 @@ const Back = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: black;
+	background-color: ${({ color }) => color};
+	${bgImg}
 	backface-visibility: hidden;
 `;
 
@@ -40,7 +51,8 @@ const Holder = styled.div`
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
-	background-color: black;
+	background-color: ${({ color }) => color};
+	${bgImg}
 	backface-visibility: hidden;
 	transform: rotateY(180deg);
 `;
@@ -50,23 +62,31 @@ const Wrapper = styled.figure`
 	perspective: 1000px;
 	with: 100%;
 	height: 100%;
+	border-radius: 16px;
+
+	* {
+		border-radius: 16px;
+	}
 `;
 
-const Card = ({ active, click, link, type, uid, index }) => {
+const Card = ({ active, click, link, type, uid, index, className, color }) => {
 	const toggle = () => {
 		click({ type, uid, index });
 	};
 
 	return (
-		<Wrapper className={`card ${active && 'active'}`} onClick={toggle}>
+		<Wrapper
+			className={`card ${className} ${active ? 'active' : ''}`}
+			onClick={toggle}>
 			<Container className="card__inner">
-				<Back />
+				<Back color={color} />
 				<Holder
+					color={color}
 					style={{
 						backgroundImage: `url(/holder-${type.toLowerCase()}.jpg)`
 					}}
 				/>
-				<Front style={{ backgroundImage: `url(${link})` }} />
+				<Front style={{ backgroundImage: `url(${link})` }} className="border" />
 			</Container>
 		</Wrapper>
 	);
@@ -78,12 +98,15 @@ Card.propTypes = {
 	link: PropTypes.string.isRequired,
 	type: PropTypes.string.isRequired,
 	click: PropTypes.func,
-	active: PropTypes.bool
+	active: PropTypes.bool,
+	className: PropTypes.string,
+	color: PropTypes.string.isRequired
 };
 
 Card.defaultProps = {
 	click: () => {},
-	active: false
+	active: false,
+	className: ''
 };
 
 export default Card;

@@ -4,7 +4,7 @@ import Layout from '../../components/Layout';
 
 const HistoryPage = ({ path }) => (
 	<Layout path={path}>
-		<h1>Hi from game records</h1>
+		<h1>Game records</h1>
 	</Layout>
 );
 

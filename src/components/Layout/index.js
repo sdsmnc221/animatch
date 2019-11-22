@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Menu from '../Menu';
+import Canvas from '../Canvas';
 
 import '../../styles/styles.scss';
 
@@ -16,6 +17,7 @@ const Layout = ({ children, path }) => {
 			<main className="app__wrapper">{children}</main>
 			<Menu currentPage={path} />
 			<aside className="app__modal"></aside>
+			<Canvas />
 		</div>
 	);
 };
