@@ -5,7 +5,9 @@ import {
 	SESSION_DUMP_IMAGES,
 	SESSION_UPDATE_CURRENT_CARDS,
 	SESSION_CHECK_PAIR,
-	SESSION_CHECK_ENDGAME
+	SESSION_CHECK_ENDGAME,
+	SESSION_COUNT_MOVES,
+	SESSION_RESET_GAME
 } from '../../actionTypes';
 
 import initialStates from '../../initialStates';
@@ -87,6 +89,21 @@ function play(state = initialStates.session, action) {
 			return {
 				...state,
 				endGameStatus
+			};
+		}
+		case SESSION_COUNT_MOVES: {
+			const { moves } = state;
+
+			return {
+				...state,
+				moves: moves + 1
+			};
+		}
+		case SESSION_RESET_GAME: {
+			return {
+				...initialStates.session,
+				endGameStatus: null,
+				moves: 0
 			};
 		}
 		default:

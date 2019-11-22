@@ -5,7 +5,6 @@ export default {
 	},
 	play: {
 		isset: false,
-		moves: 0,
 		configs: {
 			mode: null,
 			timerActivated: false,
@@ -22,6 +21,7 @@ export default {
 		currentCards: [],
 		matchedPairs: [],
 		endGameStatus: null,
+		moves: 0,
 		preImages: []
 	}
 };

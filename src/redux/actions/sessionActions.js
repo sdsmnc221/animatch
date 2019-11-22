@@ -7,7 +7,9 @@ import {
 	SESSION_DUMP_IMAGES,
 	SESSION_UPDATE_CURRENT_CARDS,
 	SESSION_CHECK_PAIR,
-	SESSION_CHECK_ENDGAME
+	SESSION_CHECK_ENDGAME,
+	SESSION_RESET_GAME,
+	SESSION_COUNT_MOVES
 } from '../actionTypes';
 import utils from '../../utils';
 import configs from '../../configs';
@@ -130,3 +132,7 @@ export const checkPair = (dispatch) => dispatch({ type: SESSION_CHECK_PAIR });
 
 export const checkEndGame = (dispatch) =>
 	dispatch({ type: SESSION_CHECK_ENDGAME });
+
+export const resetGame = (dispatch) => dispatch({ type: SESSION_RESET_GAME });
+
+export const countMoves = (dispatch) => dispatch({ type: SESSION_COUNT_MOVES });

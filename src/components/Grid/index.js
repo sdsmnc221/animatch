@@ -9,9 +9,9 @@ import utils from '../../utils';
 import configs from '../../configs';
 import {
 	updateCurrentCards,
-	checkEndGame
+	checkEndGame,
+	countMoves
 } from '../../redux/actions/sessionActions';
-import { countMoves } from '../../redux/actions/playActions';
 
 const { peru, darkKhaki, rosyBrown } = configs.colors;
 const { sample } = utils;

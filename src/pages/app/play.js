@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { resetConfigs } from '../../redux/actions/playActions';
-import { fetchImages, dumpImages } from '../../redux/actions/sessionActions';
+import {
+	fetchImages,
+	dumpImages,
+	resetGame
+} from '../../redux/actions/sessionActions';
 
 import Layout from '../../components/Layout';
 import GameSettings from '../../components/GameSettings';
@@ -35,12 +39,13 @@ const PlayPage = ({ path }) => {
 	const session = useSelector((state) => state.session);
 
 	const { username } = profile;
-	const { isset, configs: gameSettings, moves } = play;
-	const { cards, preImages } = session;
+	const { isset, configs: gameSettings } = play;
+	const { cards, preImages, moves, fetchingImages } = session;
 
 	const reset = () => {
 		dumpImages(dispatch);
 		resetConfigs(dispatch);
+		resetGame(dispatch);
 	};
 
 	useEffect(() => {
@@ -55,7 +60,7 @@ const PlayPage = ({ path }) => {
 					<GameSettings />
 				</>
 			)}
-			{isset && (
+			{isset && !fetchingImages && (
 				<Playfield>
 					<Grid cards={cards} />
 					<Controller>

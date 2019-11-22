@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
@@ -8,6 +8,9 @@ import Button from '../Button';
 import Modal, { renderModalContent } from '../Modal';
 
 import configs from '../../configs';
+
+import { resetConfigs } from '../../redux/actions/playActions';
+import { dumpImages, resetGame } from '../../redux/actions/sessionActions';
 
 const { credits, rules, extLink } = configs.menu;
 
@@ -28,6 +31,7 @@ const Menu = ({ currentPage }) => {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [contentType, setContentType] = useState(null);
 	const { endGameStatus } = useSelector((state) => state.session);
+	const dispatch = useDispatch();
 
 	const showModal = (what) => {
 		setModalVisible(true);
@@ -37,6 +41,12 @@ const Menu = ({ currentPage }) => {
 	const hideModal = () => {
 		setModalVisible(false);
 		setContentType(null);
+	};
+
+	const reset = () => {
+		dumpImages(dispatch);
+		resetConfigs(dispatch);
+		resetGame(dispatch);
 	};
 
 	useEffect(() => {
@@ -54,7 +64,9 @@ const Menu = ({ currentPage }) => {
 					label={rules.buttonLabel}
 					click={() => showModal(rules.typeLabel)}
 				/>
-				<Link to={extLink(currentPage).to}>{extLink(currentPage).label}</Link>
+				<Link onClick={reset} to={extLink(currentPage).to}>
+					{extLink(currentPage).label}
+				</Link>
 			</Nav>
 			{modalVisible && (
 				<Modal>

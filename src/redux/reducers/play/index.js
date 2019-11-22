@@ -27,14 +27,6 @@ function play(state = initialStates.play, action) {
 				}
 			};
 		}
-		case PLAY_COUNT_MOVES: {
-			const { moves } = state;
-
-			return {
-				...state,
-				moves: moves + 1
-			};
-		}
 		case PLAY_RESET_CONFIGS: {
 			return {
 				...initialStates.play
