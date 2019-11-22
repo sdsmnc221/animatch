@@ -49,6 +49,8 @@ const layout = (cardsNb) => {
 	const pairsNb = cardsNb / 2;
 	let cols, rows;
 
+	console.log(cardsNb);
+
 	switch (pairsNb) {
 		case 7:
 			cols = 5;

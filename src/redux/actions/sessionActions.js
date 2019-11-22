@@ -91,7 +91,7 @@ export const fetchImages = (dispatch, configs, preImages) => {
 		.all(prepAxios)
 		.then(
 			axios.spread((...res) => {
-				const data = assignCards([...res, ...preImages], prep);
+				const data = assignCards([...res], prep);
 
 				dispatch({
 					type: SESSION_FETCH_IMAGES_SUCCESS,
