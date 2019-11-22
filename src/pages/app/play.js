@@ -50,7 +50,7 @@ const PlayPage = ({ path }) => {
 
 	useEffect(() => {
 		if (isset) fetchImages(dispatch, gameSettings, preImages);
-	}, [isset, gameSettings]);
+	}, [isset, gameSettings, dispatch, preImages.length]);
 
 	return (
 		<Layout path={path}>

@@ -20,7 +20,7 @@ const IndexPage = () => {
 
 	useEffect(() => {
 		if (!username) newUser(dispatch);
-	}, [username]);
+	}, [username, dispatch]);
 
 	return (
 		<Layout path="/">

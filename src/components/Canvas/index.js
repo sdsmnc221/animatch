@@ -60,6 +60,8 @@ const Canvas = () => {
 		setH(configs.dimensions.H());
 	};
 
+	const events = [onMouseMove, onMouseDown, onMouseUp, onResize];
+
 	useEffect(() => {
 		if (refCanvas.current !== null) {
 			const canvas = refCanvas.current;
@@ -83,7 +85,7 @@ const Canvas = () => {
 			window.removeEventListener('mouseup', onMouseUp);
 			window.removeEventListener('resize', onResize);
 		};
-	}, [refCanvas.current, W, H]);
+	}, [refCanvas.current, W, H, ...events]);
 
 	return <canvas ref={refCanvas}></canvas>;
 };
