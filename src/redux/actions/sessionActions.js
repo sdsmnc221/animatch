@@ -81,48 +81,32 @@ const assignCards = (imagesArray, prep) => {
 
 export const fetchImages = (dispatch, configs, preImages) => {
 	const { pairsNb, animals } = configs;
-	let prep;
 
-	if (preImages.length >= pairsNb) {
-		prep = deepFlatten(assignPairs(pairsNb, animals));
-		const data = assignCards(preImages, prep);
+	dispatch({ type: SESSION_FETCH_IMAGES_START });
 
-		dispatch({
-			type: SESSION_FETCH_IMAGES_SUCCESS,
-			payload: {
-				...data
-			}
-		});
-	} else {
-		dispatch({ type: SESSION_FETCH_IMAGES_START });
+	const prep = deepFlatten(assignPairs(pairsNb, animals));
+	const prepAxios = prep.map((e) => axios.get(e.link));
 
-		const prep_ = deepFlatten(assignPairs(pairsNb - preImages.length, animals));
-		const prepAxios = prep_.map((e) => axios.get(e.link));
+	axios
+		.all(prepAxios)
+		.then(
+			axios.spread((...res) => {
+				const data = assignCards([...res, ...preImages], prep);
 
-		axios
-			.all(prepAxios)
-			.then(
-				axios.spread((...res) => {
-					prep = deepFlatten(assignPairs(pairsNb, animals));
-					const data = assignCards([...res, ...preImages], prep);
-
-					dispatch({
-						type: SESSION_FETCH_IMAGES_SUCCESS,
-						payload: {
-							...data
-						}
-					});
-
-					dumpImages(dispatch);
-				})
-			)
-			.catch((error) =>
 				dispatch({
-					type: SESSION_FETCH_IMAGES_FAILURE,
-					payload: error
-				})
-			);
-	}
+					type: SESSION_FETCH_IMAGES_SUCCESS,
+					payload: {
+						...data
+					}
+				});
+			})
+		)
+		.catch((error) =>
+			dispatch({
+				type: SESSION_FETCH_IMAGES_FAILURE,
+				payload: error
+			})
+		);
 };
 
 export const dumpImages = (dispatch) => dispatch({ type: SESSION_DUMP_IMAGES });

@@ -10,7 +10,7 @@ import Modal, { renderModalContent } from '../Modal';
 import configs from '../../configs';
 
 import { resetConfigs } from '../../redux/actions/playActions';
-import { dumpImages, resetGame } from '../../redux/actions/sessionActions';
+import { resetGame } from '../../redux/actions/sessionActions';
 
 const { credits, rules, extLink } = configs.menu;
 
@@ -44,7 +44,6 @@ const Menu = ({ currentPage }) => {
 	};
 
 	const reset = () => {
-		dumpImages(dispatch);
 		resetConfigs(dispatch);
 		resetGame(dispatch);
 	};
