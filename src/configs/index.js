@@ -91,6 +91,7 @@ const configs = {
 		}
 	},
 	API: {
+		ip: 'http://ip-api.com/json',
 		cors: 'https://cors-anywhere.herokuapp.com/',
 		endpoint: 'https://some-random-api.ml/',
 		animals: [

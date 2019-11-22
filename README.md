@@ -3,7 +3,7 @@
 One Paragraph of project description goes here.
 Badges too.
 
-[Live Demo](https://animatch.surge.sh)
+[Live Demo](https://animatch.surge.sh/app)
 
 ## Getting Started
 
@@ -33,6 +33,8 @@ Dev
 gatsby clean //optional
 gatsby develop
 ```
+
+Server running at :8000/app by default
 
 ## Build & Deploy
 

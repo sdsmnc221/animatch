@@ -1,4 +1,8 @@
-import { PROFILE_NEW_USER, PROFILE_RESET_USERNAME } from '../../actionTypes';
+import {
+	PROFILE_NEW_USER,
+	PROFILE_RESET_USERNAME,
+	PROFILE_LOOKUP_COUNTRY_SUCCESS
+} from '../../actionTypes';
 import initialStates from '../../initialStates';
 
 import Haikunator from 'haikunator';
@@ -19,6 +23,12 @@ function profile(state = initialStates.profile, action) {
 			return {
 				...state,
 				username: name()
+			};
+		}
+		case PROFILE_LOOKUP_COUNTRY_SUCCESS: {
+			return {
+				...state,
+				country: action.payload.country
 			};
 		}
 		default:
