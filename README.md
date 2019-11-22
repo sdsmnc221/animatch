@@ -1,4 +1,4 @@
-# Project Title
+# animatch
 
 One Paragraph of project description goes here.
 Badges too.
@@ -14,56 +14,38 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them.
 
 ```
-Give examples
+npm i -g gatsby-cli //optional
 ```
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running.
 
-Say what the step will be
+Install dependencies
 
 ```
-Give the example
+npm i
 ```
 
-And repeat
+Dev
 
 ```
-until finished
+gatsby clean //optional
+gatsby develop
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
-
-## Running the tests
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why.
+## Build & Deploy
 
 ```
-Give an example
+npm run build
 ```
-
-### And coding style tests
-
-Explain what these tests test and why.
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system.
 
 ## Built With
 
 - [Make A README](https://www.makeareadme.com/) - README's good practices.
 - [A template to make good README.md](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) - Dependency Management.
 - **Love**.
+- Gatsby
 
 ## Contributing
 
