@@ -2,6 +2,11 @@
 
 * {
 	box-sizing: border-box;
+
+	&::selection {
+		background-color: $peru;
+		color: $text-i;
+	}
 }
 
 body {
@@ -259,6 +264,39 @@ a {
 				background-size: auto;
 				opacity: 0.8;
 			}
+		}
+	}
+
+	&__leaderboard {
+		p {
+			margin-bottom: 12px;
+			font-weight: $bold;
+			border-bottom: thin solid $rosy-brown;
+			background-color: transparent;
+
+			&:nth-of-type(2n) {
+				background-image: url('/pattern-1.png');
+				background-repeat: repeat;
+				background-position: center;
+				background-size: 32% auto;
+				background-color: $beige;
+			}
+
+			&:hover {
+				background-color: $rosy-brown;
+				color: $peru;
+
+				strong {
+					color: $text-i;
+				}
+			}
+		}
+
+		strong {
+			@include amatic;
+			font-size: $base-font-size * 1.8;
+			letter-spacing: $base-letter-spacing;
+			margin: 0 4px;
 		}
 	}
 }

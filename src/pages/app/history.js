@@ -11,8 +11,10 @@ import configs from '../../configs';
 const { colors, leaderboard } = configs;
 
 const H1 = styled.div`
-	position: absolute;
-	top: 8%;
+	${({ absolute }) =>
+		absolute &&
+		`position: absolute;
+	top: 8%;`}
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -52,28 +54,28 @@ const HistoryPage = ({ path }) => {
 
 	const change = ({ target }) => setActiveMode(target.value);
 
+	const hasRecordsNotNULL = () =>
+		hasRecords &&
+		records[activeMode].sessions.filter((r) => r.username !== null).length > 0;
+
 	const info = (record) => {
 		const keys = Object.keys(display);
 		let string = '';
 
-		keys.forEach((k) => (string += display[k].replace('x', record[k])));
+		keys.forEach(
+			(k) => (string += display[k].replace('x', `<strong>${record[k]}</strong>`))
+		);
 
-		return string;
+		return { __html: string };
 	};
 
 	useEffect(() => {
 		fetchHistory(dispatch);
 	}, [dispatch]);
 
-	useEffect(() => {
-		if (hasRecords) {
-			console.log(records);
-		}
-	}, [hasRecords]);
-
 	return (
 		<Layout path={path}>
-			<H1>
+			<H1 absolute={hasRecordsNotNULL()}>
 				<h1>Game Leaderboard</h1>
 				<select ref={refSelect} onChange={change} defaultValue={modes[0]}>
 					{modes.map((option, i) => (
@@ -83,12 +85,13 @@ const HistoryPage = ({ path }) => {
 					))}
 				</select>
 			</H1>
-			<Leaderboard>
-				{hasRecords &&
-					records[activeMode].sessions.map(
-						(r, i) => r.username && <p key={i}>{info(r)}</p>
+			{hasRecordsNotNULL() && (
+				<Leaderboard className="app__leaderboard">
+					{records[activeMode].sessions.map(
+						(r, i) => r.username && <p key={i} dangerouslySetInnerHTML={info(r)} />
 					)}
-			</Leaderboard>
+				</Leaderboard>
+			)}
 		</Layout>
 	);
 };
